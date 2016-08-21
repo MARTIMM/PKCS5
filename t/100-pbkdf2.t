@@ -5,7 +5,6 @@ use Test;
 
 use PKCS5::PBKDF2;
 use OpenSSL::Digest;
-use Base64;
 
 #-------------------------------------------------------------------------------
 subtest {
@@ -14,7 +13,7 @@ subtest {
 
   my Str $spw = $p.derive-hex(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     1,
   );
 
@@ -36,7 +35,7 @@ subtest {
 
   my Str $spw = $p.derive-hex(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     4096,
   );
 
@@ -52,7 +51,7 @@ subtest {
 
   my Buf $spw1 = $p.derive(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     1,
   );
 
@@ -62,7 +61,7 @@ subtest {
 
   my Str $spw2 = $p.derive-hex(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     1,
   );
 
@@ -70,7 +69,7 @@ subtest {
 
   $spw2 = $p.derive-hex(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     4096,
   );
 
@@ -84,7 +83,7 @@ subtest {
 
   my Str $spw2 = $p.derive-hex(
     Buf.new('pencil'.encode),
-    decode-base64( 'QSXCR+Q6sek8bf92', :bin),
+    Buf.new( 65, 37, 194, 71, 228, 58, 177, 233, 60, 109, 255, 118),
     4096,
   );
 
