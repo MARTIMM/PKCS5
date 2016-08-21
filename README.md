@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/MARTIMM/PKCS5.svg?branch=master)](https://travis-ci.org/MARTIMM/PKCS5)
 
+# Public Key Cryptography Standards \#5
+
+This package implements part of PKCS 5 which is, according to the ![wiki](https://en.wikipedia.org/wiki/PKCS), a Password-based Encryption Standard. The derivation algorithm PBKDF2 is implemented as a class in this package.
+
 ## Synopsis
 
 ```
@@ -39,6 +43,8 @@ See [semantic versioning](http://semver.org/). Please note point 4. on
 that page: *Major version zero (0.y.z) is for initial development. Anything may
 change at any time. The public API should not be considered stable.*
 
+* 0.1.1
+  * Added pod doc.
 * 0.1.0
   * Implemented derive() and derive-hex()
 * 0.0.1 Setup
