@@ -1,8 +1,6 @@
-# MongoDB Driver
+# Public Key Cryptography Standards \#5 (PKCS 5)
 
 [![Build Status](https://travis-ci.org/MARTIMM/PKCS5.svg?branch=master)](https://travis-ci.org/MARTIMM/PKCS5)
-
-# Public Key Cryptography Standards \#5
 
 This package implements part of PKCS 5 which is, according to the ![wiki](https://en.wikipedia.org/wiki/PKCS), a Password-based Encryption Standard. The derivation algorithm PBKDF2 is implemented as a class in this package.
 

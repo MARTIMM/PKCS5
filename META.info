@@ -14,9 +14,6 @@
   "provides": {
     "PKCS5::PBKDF2":            "lib/PKCS5/PBKDF2.pm6"
   },
-  "resources": [
-    "lib/PKCS5/PBKDF2.pod"
-  ],
   "source-url": "git://github.com/MARTIMM/PKCS5",
-  "version": "v0.1.1"
+  "version": "v0.1.2"
 }
