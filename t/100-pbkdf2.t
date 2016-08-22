@@ -8,7 +8,7 @@ use OpenSSL::Digest;
 
 #-------------------------------------------------------------------------------
 subtest {
-  my PKCS5::PBKDF2 $p .= new(:PRF(&md5));
+  my PKCS5::PBKDF2 $p .= new(:CGH(&md5));
   isa-ok $p, PKCS5::PBKDF2;
 
   my Str $spw = $p.derive-hex(
@@ -31,7 +31,7 @@ subtest {
 
 #-------------------------------------------------------------------------------
 subtest {
-  my PKCS5::PBKDF2 $p .= new(:PRF(&sha256));
+  my PKCS5::PBKDF2 $p .= new(:CGH(&sha256));
 
   my Str $spw = $p.derive-hex(
     Buf.new('pencil'.encode),

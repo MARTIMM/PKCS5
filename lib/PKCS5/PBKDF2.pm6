@@ -20,7 +20,7 @@ constant C-HLENS = {
 #-------------------------------------------------------------------------------
 # RFC2898
 #
-# Options:        PRF        underlying pseudorandom function
+# Options:        CGH        underlying cryptographic hash function
 #                 hlen       length in octets of pseudorandom function output
 #
 # Input:          P          password, an octet string
@@ -33,7 +33,7 @@ constant C-HLENS = {
 #
 class PBKDF2 {
 
-  has Callable $!PRF;
+  has Callable $!CGH;
   has Int $!dklen where $_ > 0;
   has Int $!l where $_ > 0;
   has Int $!r;
@@ -41,18 +41,18 @@ class PBKDF2 {
 
   #-----------------------------------------------------------------------------
   submethod BUILD (
-    Callable :$PRF = &sha1,     # underlying pseudorandom function
+    Callable :$CGH = &sha1,     # underlying cryptographic hash function
     Int :$dklen,                # intended length in octets of derived key,
   ) {
 
-#say &$PRF.perl;
+#say &$CGH.perl;
 
     # Check prf name and get its output length if known
-    &$PRF.perl ~~ m/ ['sub'|'method'] \s+ ( <.ident>+ ) /;
+    &$CGH.perl ~~ m/ ['sub'|'method'] \s+ ( <.ident>+ ) /;
     my $prf-name = $/[0].Str;
     if C-HLENS{$prf-name}:exists {
       $!hlen = C-HLENS{$prf-name};
-      $!PRF = $PRF;
+      $!CGH = $CGH;
     }
 
     else {
@@ -104,11 +104,11 @@ class PBKDF2 {
 
     my Buf @U = [];
 
-    @U[0] = hmac( $pw, $salt ~ self!encode-int32-BE($lc), &$!PRF);
+    @U[0] = hmac( $pw, $salt ~ self!encode-int32-BE($lc), &$!CGH);
     my $F = @U[0];
     for 1 ..^ $i -> $ci {
 #say "i: $ci" unless $ci % 500;
-      @U[$ci] = hmac( $pw, @U[$ci - 1], &$!PRF);
+      @U[$ci] = hmac( $pw, @U[$ci - 1], &$!CGH);
       for ^($F.elems) -> $ei {
         $F[$ei] = $F[$ei] +^ @U[$ci][$ei];
       }
