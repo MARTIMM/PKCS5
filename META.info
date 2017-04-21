@@ -7,7 +7,7 @@
     "OpenSSL"
   ],
   "description": "PKCS #5 with PBKDF2",
-  "license": "The Artistic License 2.0",
+  "license": "Artistic-2.0",
   "name": "PKCS5",
   "perl": "6.c",
   "provides": {
